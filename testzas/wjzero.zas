@@ -1,0 +1,16 @@
+.OR	0x0001
+	BRA _stackbase 
+_main:	 
+	ADDI xFP x0 0 
+_quit:	 
+	POP xFP 
+	OUT xFP
+	DUMP
+	HLT 
+.OR	0x7000 
+_stackbase:	 
+	LDI x5 _stackbase 
+	MOV xFP x5 
+	MOV xSP x5 
+	CALL _main 
+//	BRA _quit 
